@@ -1,0 +1,9 @@
+# Don’t bake secrets or local DB into the image
+.env
+.env.*
+chroma_store/
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+
+# Chroma DB & app artifacts
+chroma_store/
+storage/
+*.sqlite
+*.db
+
+# VS Code / editors
+.vscode/
+.idea/
+
+# Docker build cruft
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
