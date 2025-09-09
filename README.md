@@ -12,6 +12,7 @@ Conversational chatbot that answers questions grounded in PDF documents using:
 This project is designed to work with **your own PDFs**. You may not have redistribution rights for third-party documents.  
 Create a `docs/` folder and put your PDFs there locally (they are **not** committed to the repo).
 
+```
 hr-chatbot/
 Dockerfile
 requirements.txt
@@ -21,7 +22,7 @@ prompts.py
 .env.example
 README.md
 docs/ # <-- put PDFs here locally (not in Git)
-
+```
 
 ## Option A: Run with Docker (recommended)
 ```bash
