@@ -8,6 +8,20 @@ Conversational chatbot that answers questions grounded in PDF documents using:
 
 > This repo ships a Dockerized, no-notebook workflow. It’s easy to run locally and safe to fork.
 
+## Recent Updates (Nov 2025)
+
+- **Resolved Chroma 0.4+ compatibility issues**
+  - Removed deprecated `vectordb.persist()` call; Chroma now auto-persists by default.
+  - Added `client_settings=Settings(anonymized_telemetry=False)` to disable telemetry warnings.
+- **Migrated imports for latest LangChain (v0.2+)**
+  - Updated to use `langchain_chroma` and `langchain_core.prompts`.
+  - Replaced deprecated `get_relevant_documents()` and direct `llm(...)` calls with `.invoke()` for retriever and LLM.
+- **Cleaner Docker experience**
+  - Build and runtime now fully compatible with Python 3.11 and latest LangChain ecosystem.
+  - All deprecation warnings resolved and image size reduced.
+
+* This should ensure the chatbot runs seamlessly on the latest LangChain + Chroma stack both in Docker and local environments but I've only tested via Docker.
+
 ## ⚠️ Documents & Copyright
 This project is designed to work with **your own PDFs**. You may not have redistribution rights for third-party documents.  
 Create a `docs/` folder and put your PDFs there locally (they are **not** committed to the repo).
@@ -52,5 +66,6 @@ python main.py
 
 ## Troubleshooting
 
-* Ensure docs/ contains PDFs locally.
-* If you see deprecation warnings from LangChain/Chroma, the app still works; see comments in code for the modern imports (langchain-chroma) and .invoke() usage.
+- Ensure the `docs/` folder contains your PDFs.
+- If you encounter version errors, run `pip install -U -r requirements.txt`.
+- This project is verified with **LangChain v0.2.11+**, **Chroma 0.5.4+**, and **Gradio 4.44+**.

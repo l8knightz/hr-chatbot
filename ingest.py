@@ -3,7 +3,8 @@ from dotenv import load_dotenv
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
+from chromadb.config import Settings
 
 load_dotenv()
 
@@ -35,9 +36,9 @@ def build_store():
     vectordb = Chroma.from_documents(
         documents=chunks,
         embedding=embeddings,
-        persist_directory=PERSIST_DIR
+        persist_directory=PERSIST_DIR,
+        client_settings=Settings(anonymized_telemetry=False),
     )
-    vectordb.persist()
     return vectordb
 
 if __name__ == "__main__":
